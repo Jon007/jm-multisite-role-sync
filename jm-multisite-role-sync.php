@@ -34,6 +34,10 @@ function ksu_save_role( $user_id, $role ) {
     if ($blogid ==2){
         $prefix_2 = 'wp_';
         $prefix_1 = 'wp_2_';        
+    } elseif ($blogid != 1){
+        //in this scenario we only want to synchronise for sites 1 and 2
+        //specialist additional sites must be excluded
+        return;
     }
 	
 	$caps = get_user_meta( $user_id, $prefix_1 . 'capabilities', true );
